@@ -1,47 +1,39 @@
-import Navbar from '../components/navbar'
-import Card from '../components/card'
+import React, { useEffect, useState } from 'react'
+import Navbar from '../Components/Navbar'
+import Slider from '../Components/HomePage/slider'
+import Card from '../Components/HomePage/Card'
 import { getEvents } from '../Services/eventServices'
-import { useState } from 'react'
-import { useEffect } from 'react'
-import {useGSAP} from '@gsap/react'
+import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-const HomePage = () => {
-  const [items,setItems]=useState([])
-  useEffect(()=>{
-    const getInfo=async()=>{
-    const res=await getEvents();
-    console.log("res",res)
-    setItems(res);
-    console.log("what is inside after destructuring",items)
-  }
-  getInfo();
-  },[])
-    useGSAP(()=>{
-gsap.from('.event-card',{
-      y: 60,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.5,
-      ease: 'power3.out',
+const HomePage = ({theme,setTheme}) => {
+  console.log(theme)
+  useGSAP(()=>{
+    gsap.from('.div',{
+      opacity:0,
+      duration:1,
+      ease:'power1.inOut',
+      stagger:{
+        each:0.3,
+        from:'random',
+      },
     })
-  },[items])
+  },[])
+
+  const [events, setEvents] =useState([]);
+  useEffect(() => {
+    getEvents().then((data)=>{
+      setEvents(data.list);
+    })
+  },[])
   return (
-    <div>
-      <Navbar/>
-      HomePage
-      <div className='flex bg-amber-300 gap-4'>
-      {
-        items.map((item,index)=>{
-          console.log("item",item);
-         return(<div key={item._id} className={`event-card event-card-${index} `}  ><Card id={item._id} name={item.movieName} photo={item.photoUrl} description={item.description} rating={item.rating} location={item.price} price={item.price} date={item.date}/></div> )
-        })
-       
-      }
-      </div>
-      <div className='box h-52 w-52 bg-red-600'>
-        BOX
-      </div>
-    </div>
+    <div className={`${(theme=='black'?'black':'white')} div`}>
+      <Navbar setTheme={setTheme} theme={theme} /> 
+      <Slider/>
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4'>
+      {events.map((event)=>{
+        return <Card key={event._id} event={event}/>
+      })}
+    </div></div>
   )
 }
 

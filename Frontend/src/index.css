@@ -1,4 +1,9 @@
-input{
-  border:1px solid black
-}
 @import "tailwindcss";
+.black{
+  background-color: black;
+  color: bisque;
+}
+.white{
+  background-color:whitesmoke ;
+  color:black,
+}

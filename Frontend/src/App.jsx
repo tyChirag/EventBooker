@@ -1,17 +1,20 @@
-import React from 'react'
-import AddEvents from './Pages/AddEvents'
+import React, { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import LandingPage from './Pages/LandingPage'
 import HomePage from './Pages/HomePage'
-import DetailsPage from './Pages/detailsPage'
+import Details from './Pages/Details'
+import AddEvent from './Pages/AddEvent'
 
 const App = () => {
+  const [theme,setTheme]=useState('black')
   return (
     <div>
       <Routes>
-        <Route path='/' element={<HomePage/>} />
-        <Route path='/add-events' element={<AddEvents/>} />
-        <Route path='/event/:id' element={<DetailsPage/>} />
-        </Routes>
+        <Route path='/' element={<LandingPage />} />
+        <Route path='/home' element={<HomePage theme={theme} setTheme={setTheme} />} />
+        <Route path='/details/:eventId' element={<Details />} />
+        <Route path='/addEvents' element={<AddEvent />} />
+      </Routes>
     </div>
   )
 }

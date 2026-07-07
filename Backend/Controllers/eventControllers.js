@@ -14,7 +14,7 @@ exports.addEvent=(req,res,next)=>{
       year: 'numeric'
     })
   photo = req.file ? `/uploads/${req.file.filename}` : null
-  const{movieName,date,location,rating,description,price}=req.body;
+  const{movieName,date,location,rating,description,price,time}=req.body;
   const newEvent=new Events({
     movieName,
     date:formattedDate,
@@ -22,7 +22,8 @@ exports.addEvent=(req,res,next)=>{
     rating,
     photoUrl:photo,
     description,
-    price
+    price,
+    time
   })
   newEvent.save()
   .then((result)=>{
@@ -36,6 +37,5 @@ const id=req.params.eventId;
 console.log("This is id")
 const details= await Events.findById(id);
 console.log(details)
-res.json(details);
-
+res.json(details)
 }

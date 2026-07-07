@@ -1,33 +1,33 @@
-export const addEvent=async (eventName,date,location,rating,photo,description,price)=>{
-   const formData=new FormData()
-        formData.append('movieName', eventName)
+export const addEvent=async (name,date,time,price,photo,description,location,rating=0)=>{
+  const formData=new FormData()
+        formData.append('movieName', name)
         formData.append('date', date)
         formData.append('location', location)
         formData.append('rating', rating)
         formData.append('price', price)
         formData.append('description', description)
         formData.append('photo', photo) 
-const response=await fetch('http://localhost:3001/add-Event',{
-  method:'POST',
-  body:formData,
-})
-console.log(response);
- const result= await response.json();
- return result;
+        formData.append('time',time)
+  const response= await fetch('http://localhost:3000/add-event',{
+    method:'POST',
+    body:formData
+  })
+  return await response.json();
 }
+
 export const getEvents=async()=>{
-  const response=await fetch('http://localhost:3001/',{
+  console.log("I am in get events")
+  const response=await fetch('http://localhost:3000/',{
     method:'GET',
-  headers:{"Content-Type":"application/json"},});
-  const result=await response.json();
-  console.log("This is result",result)
-  console.log("Result list",result.list[0]);
-  return result.list;
+  })
+  return response.json();
 }
-export const getEventDetails=async (id)=>{
-const response=await fetch(`http://localhost:3001/view-details/${id}`,{
-  method:'POST'
-});
-const result=await response.json();
-return result;
+
+export const getDetails=async(id)=>{
+const response=await fetch(`http://localhost:3000/view-details/${id}`,{
+  method:"GET",
+})
+console.log("IN getDetails")
+const result= await response.json();
+return result
 }
