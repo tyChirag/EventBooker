@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from '../Components/Navbar'
 import Slider from '../Components/HomePage/slider'
 import Card from '../Components/HomePage/Card'
 import { getEvents } from '../Services/eventServices'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
+import Navbar from '../Components/HomePage/Navbar'
 const HomePage = ({theme,setTheme}) => {
   console.log(theme)
   useGSAP(()=>{

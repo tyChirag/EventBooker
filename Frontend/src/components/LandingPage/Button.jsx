@@ -1,18 +1,40 @@
-import { useGSAP } from '@gsap/react'
-import { motion } from 'framer-motion'
-import gsap from 'gsap'
-import { CustomEase, CustomWiggle } from 'gsap/all'
-import { Timeline } from 'gsap/gsap-core.js'
 import React from 'react'
 import { Link } from 'react-router-dom'
-const Button = () => {
-  // const tl=gsap.timeline()
-  // useGSAP(()=>{
+import { motion } from 'framer-motion'
 
-  // })
+const Button = () => {
   return (
-    <motion.div initial={{opacity:0}} animate={{x:[0,200,-200,0],y:[0,-200,200,0],opacity:1}} transition={{duration:2}} className='but p-7 text-4xl font-black border rounded-2xl hover:scale-120 transition duration-300 hover:text-emerald-400 shadow-2xl shadow-blue-300'>
-      <Link  to='/home' >Get Tickets</Link>
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, delay: 1.8 }}
+      className='flex items-center gap-4'
+    >
+      {/* Primary CTA */}
+      <Link to='/home'>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.97 }}
+          className='px-8 py-4 rounded-full text-sm font-bold tracking-widest uppercase text-black transition-all duration-300'
+          style={{
+            background: 'linear-gradient(135deg, #c9a96e, #a07840)',
+            boxShadow: '0 0 40px rgba(201,169,110,0.3)'
+          }}
+        >
+          Get Tickets
+        </motion.button>
+      </Link>
+
+      {/* Secondary CTA */}
+      <Link to='/home'>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.97 }}
+          className='px-8 py-4 rounded-full text-sm font-bold tracking-widest uppercase text-white border border-white/30 hover:border-white/60 transition-all duration-300 backdrop-blur-sm'
+        >
+          Explore Events
+        </motion.button>
+      </Link>
     </motion.div>
   )
 }
