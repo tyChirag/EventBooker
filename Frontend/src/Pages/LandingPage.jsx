@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
 import Video from '../Components/LandingPage/Video'
 import Button from '../Components/LandingPage/Button'
 import TopText from '../Components/LandingPage/TopText'
 import Navbar from '../Components/LandingPage/Navbar'
+import { useState } from 'react'
 
 const LandingPage = () => {
   const [theme, setTheme] = useState('black')
