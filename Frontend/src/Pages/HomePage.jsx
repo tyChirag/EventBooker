@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import Slider from '../Components/HomePage/slider'
+import Slider from '../Components/HomePage/Slider'
 import Card from '../Components/HomePage/Card'
 import { getEvents } from '../Services/eventServices'
 import Navbar from '../Components/HomePage/Navbar'
