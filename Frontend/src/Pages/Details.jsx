@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getDetails } from "../Services/eventServices";
+import { BASE_URL } from "../config";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -98,7 +99,7 @@ const Details = () => {
 
         <img
           ref={imageRef}
-          src={`http://localhost:3000${event.photoUrl}`}
+          src={`${BASE_URL}${event.photoUrl}`}
           alt={event.movieName}
           className="absolute inset-0 w-full h-full object-cover"
         />

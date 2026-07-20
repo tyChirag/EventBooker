@@ -1,3 +1,4 @@
+console.log("I am in eventRoutes")
 const express=require('express');
 const eventRoutes=express.Router();
 const eventControllers=require('../Controllers/eventControllers');

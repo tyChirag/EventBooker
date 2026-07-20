@@ -1,3 +1,5 @@
+import { BASE_URL } from '../config';
+
 export const addEvent=async (name,date,time,price,photo,description,location,rating=0)=>{
   const formData=new FormData()
         formData.append('movieName', name)
@@ -8,7 +10,7 @@ export const addEvent=async (name,date,time,price,photo,description,location,rat
         formData.append('description', description)
         formData.append('photo', photo) 
         formData.append('time',time)
-  const response= await fetch('http://localhost:3000/add-event',{
+  const response= await fetch(`${BASE_URL}/add-event`,{
     method:'POST',
     body:formData
   })
@@ -17,14 +19,14 @@ export const addEvent=async (name,date,time,price,photo,description,location,rat
 
 export const getEvents=async()=>{
   console.log("I am in get events")
-  const response=await fetch('http://localhost:3000/',{
+  const response=await fetch(`${BASE_URL}/`,{
     method:'GET',
   })
   return response.json();
 }
 
 export const getDetails=async(id)=>{
-const response=await fetch(`http://localhost:3000/view-details/${id}`,{
+const response=await fetch(`${BASE_URL}/view-details/${id}`,{
   method:"GET",
 })
 console.log("IN getDetails")

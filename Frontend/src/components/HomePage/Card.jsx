@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { BASE_URL } from '../../config'
 
 const Card = ({ event, theme = 'black' }) => {
   const isDark = theme === 'black'
@@ -18,7 +19,7 @@ const Card = ({ event, theme = 'black' }) => {
         <motion.img
           whileHover={{ scale: 1.1 }}
           transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-          src={`http://localhost:3000${event.photoUrl}`}
+          src={`${BASE_URL}${event.photoUrl}`}
           alt={event.movieName}
           className="w-full h-60 object-cover"
         />
