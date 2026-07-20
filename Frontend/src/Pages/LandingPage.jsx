@@ -1,7 +1,7 @@
-import Video from '../components/LandingPage/Video'
-import Button from '../components/LandingPage/Button'
-import TopText from '../components/LandingPage/TopText'
-import Navbar from '../components/LandingPage/Navbar'
+import Video from '../Components/LandingPage/Video'
+import Button from '../Components/LandingPage/Button'
+import TopText from '../Components/LandingPage/TopText'
+import Navbar from '../Components/LandingPage/Navbar'
 import { useState } from 'react'
 
 const LandingPage = () => {
